@@ -52,7 +52,7 @@ namespace TestPushNotifications
 
             var channel2 = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
             var hub2 = new NotificationHub("hubName", "ConnectionString");
-            var result2 = await hub.RegisterNativeAsync(channel2.Uri);
+            var result2 = await hub2.RegisterNativeAsync(channel2.Uri);
 
             if (result2.RegistrationId != null)
             {
