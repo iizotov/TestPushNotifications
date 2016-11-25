@@ -49,6 +49,18 @@ namespace TestPushNotifications
                 dialog.Commands.Add(new UICommand("OK"));
                 await dialog.ShowAsync();
             }
+
+            var channel2 = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+            var hub2 = new NotificationHub("hubName", "ConnectionString");
+            var result2 = await hub.RegisterNativeAsync(channel2.Uri);
+
+            if (result2.RegistrationId != null)
+            {
+                var dialog = new MessageDialog("Registration successful: " + result2.RegistrationId);
+                dialog.Commands.Add(new UICommand("OK"));
+                await dialog.ShowAsync();
+            }
+
         }
 
         /// <summary>
